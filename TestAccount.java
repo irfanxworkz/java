@@ -1,20 +1,56 @@
-public class TestAccount
+class Account
+{
+	int acc_no;
+	String name;
+	float amount;
+	//method to initialize object
+	void insert(int a,String n,float amt)
+	{
+		acc_no=a;
+		name=n;
+		amount=amt;
+	}
+	//deposit method
+	void deposit(float amt)
+	{
+		amount=amount+amt;
+		System.out.println(amt+" deposited");
+	}
+	//withdraw method
+	void withdraw(float amt)
+	{
+		if(amount<amt)
+		{
+			System.out.println("Insufficient Balance");
+		}
+		else
+		{
+			amount=amount-amt;
+			System.out.println(amt+" withdraw");
+		}
+	}
+	//method to check the balance of the account
+	void checkBalance()
+	{
+		System.out.println("Balance is:"+amount);
+	}
+	//method to display the value of an object
+	void display()
+	{
+		System.out.println(acc_no+" "+name+" "+amount);
+	}
+}
+class TestAccount
 {
 	public static void main(String args[])
 	{
-		//creating instance of Account class
-		Account acc=new Account();
-		
-		//setting values through setter method
-		acc.setAcc_no(264578451212L);
-		acc.setEmail("khan@gmail.com");
-		acc.setName("Irfan");
-		acc.setAmount(50000f);
-
-		//getting value through getter methods
-		System.out.println("Account no: "+acc.getAcc_no());
-		System.out.println("Email id: "+acc.getEmail());
-		System.out.println("Account Holder name: "+acc.getName());
-		System.out.println("Balamce: "+acc.getAmount());
-	} 
+		Account a1 = new Account();
+		a1.insert(65508,"Irfan",1000);
+		a1.display();
+		a1.checkBalance();
+		a1.deposit(40000);
+		a1.checkBalance();
+		a1.withdraw(15000);
+		a1.checkBalance();
+	}
 }
